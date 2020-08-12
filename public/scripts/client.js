@@ -27,8 +27,16 @@ const _createTweetElement = (tweet) => {
   $("#tweets").append(html);
 };
 
+//this method will sort tweets by dates from latest. 
+const _sortTweets = (tweets) => {
+  return tweets.sort((obj1, obj2) => {
+    return obj2.created_at - obj1.created_at;
+  });
+};
 const _renderTweets = (tweets) => {
-  for(const tweet of tweets) {
+  const sortedTweets = _sortTweets(tweets);
+  console.log(sortedTweets);
+  for(const tweet of sortedTweets) {
     _createTweetElement(tweet);
   }
 }
@@ -63,6 +71,16 @@ $(document).ready(() => {
   loadTweets();
   $("#frmTweets").submit(function (evt) {
     evt.preventDefault();
+    if ( !$(this).children("#tweet-text").val() || $(this).children("#tweet-text").val().length === 0) {
+      alert("Your tweet is empty.");
+      return;
+    }
+    if ( $(this).children("#tweet-text").val().length > maxCharCount) {
+      alert(`Your tweet is over ${maxCharCount}. Please modify tweet.`);
+      return;
+    }
+    
+    $("#tweets").empty();//clear all tweets on page
     submitTweet($(this).serialize());
   });
 });
