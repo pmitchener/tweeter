@@ -1,0 +1,15 @@
+.header {
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  color:#FFF;
+  font-family:sans-serif;
+  height:400px;
+  width:100%;
+  background-color: #b3bdcc;
+  background-image: url("/images/fresh-snow.png");
+}
+.my-name {
+  font-size:20px;
+}

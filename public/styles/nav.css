@@ -1,0 +1,17 @@
+.tweeter-bar{
+  display:flex;
+  flex-direction:row;
+  justify-content:space-between;
+  height:120px;
+  background-color:#4056A1;
+  font-family:bungee,sans-serif; 
+  color:#FFF;
+  padding:1.5em;
+}
+.tweeter-icon {
+  font-size:2em;
+}
+.tweeter-link {
+  font-family:sans-serif;
+  font-size:1em;
+}
