@@ -58,7 +58,33 @@ const renderTweets = (tweets) => {
 }
 $(document).ready(() => {
   //renderTweets(testTweet);
-  $("frmTweets").submit((evt) => {
+  $("#frmTweets").submit(function (evt) {
+    evt.preventDefault();
+    $.ajax({
+      type: "POST",
+      url: "http://localhost:8080/tweets/",
+      data: $(this).serialize(),
+      success: (success) => {
+        console.log("success");
+        //console.log(success);
+        $.ajax({
+          type: "GET",
+          url: "http://localhost:8080/tweets/",
+          success: (success) => {
+            console.log("GET success");
+            renderTweets(success);
+          },
+          error: (error) => {
+            console.log("GET error");
+            console.log(error);
+          }
+        });
+      },
+      error: (error) => {
+        console.log("error");
+        console.log(error);
+      }
+    });
     console.log("form submit");
   });
 });
