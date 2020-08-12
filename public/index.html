@@ -21,6 +21,7 @@
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.1/jquery.min.js"></script>
 
     <!-- App JS -->
+    <script type="text/javascript" src="/scripts/utils.js"></script>
     <script type="text/javascript" src="/scripts/client.js"></script>
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
 
@@ -34,18 +35,17 @@
     </nav>
     <header class="header">
       <div>
-          <img src="/images/profile-hex.png"> 
+        <img src="/images/profile-hex.png"> 
       </div>
-      <br>
       <div class="my-name">
-          <h2>Patrick Mitchener</h2>
+        <h2>Patrick Mitchener</h2>
       </div>
     </header>
     <!-- Page-specific (main) content here -->
     <main class="container">
       <section class="new-tweet">
         <!--<h2>Compose Tweet</h2>-->
-        <form method="POST" action="/tweets/">
+        <form id="frmTweets" method="POST" action="/tweets/">
           <label for="tweet-text">What are you humming about?</label>
           <textarea name="text" id="tweet-text"></textarea>
           <div class="new-tweet-bottom-row">
@@ -63,7 +63,7 @@
             </div>
             <div><span class="avatar-handle">@rd</span></div>
           </header>
-          <div class="tweet-text"><span>This is a tweeet!!</span></div>
+          <p class="tweet-text">This is a tweeet!!</p>
           <footer class="tweet-footer">
             <div class="tweet-footer-line"></div>
             <div class="tweet-footer-bottom-row">
