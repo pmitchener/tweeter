@@ -40,16 +40,6 @@ const getDisplayDate = (timeStmp) => {
     return `${customDtInfo.months} months ago`;
   } 
   return `${customDtInfo.years} years ago`
-  /*if (result = (_getDateInDays(timeStmp)) <= 6) {
-    return `${result} days ago`;
-  }
-  if (result = (_getDateInWeeks(timeStmp)) < 4) {
-    return `${result} weeks ago`;
-  }
-  if (result = (_getDateInMonths(timeStmp)) < 12) {
-    return `${result} months ago`;
-  } 
-  return `${_getDateInYears(timeStmp)} years ago` ;*/
 };
 const _getCustomDayeInfoObject = (timeStmp) => {
   //get time in days
@@ -70,28 +60,4 @@ const _getCustomDayeInfoObject = (timeStmp) => {
     months,
     years
   }
-}
-/* const _getDateInDays = (timeStmp) => {
-  // The number of milliseconds in one day
-  const ONE_DAY = 1000 * 60 * 60 * 24;  
-  const d1 = Date.now;
-  const d2 = new Date(timeStmp); 
-  
-  const milis_Time_Diff = d1.getTime() - d2.getTime(); 
-  return Math.ceil(milis_Time_Diff / ONE_DAY);  
 };
-
-const _getDateInWeeks = (timeStmp) => {
-  const days = _getDateInDays(timeStmp);
-  return Math.ceil(days / 7);
-}
-
-const _getDateInMonths = (timeStmp) => {
-  const weeks = _getDateInWeeks(timeStmp);
-  return Math.ceil(days / 4);
-}
-
-const _getDateInYears = (timeStmp) => {
-  const months = _getDateInMonths(timeStmp);
-  return Math.ceil(months / 12);
-} */
