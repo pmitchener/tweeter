@@ -52,3 +52,13 @@
 .hide {
   display:none;
 }
+.tweeter-link {
+  display:flex;
+  flex-direction: column;
+}
+.new-tweet-button:hover {
+  cursor:pointer;
+}
+.new-tweet-down-arrow {
+  text-align:center;
+}

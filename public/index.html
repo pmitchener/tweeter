@@ -14,6 +14,7 @@
     <link rel="stylesheet" href="/styles/header.css" type="text/css" />
     <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
     <link rel="stylesheet" href="/styles/tweet.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/icon-bounce.css" type="text/css" />
 
     <!-- External font-awesone package -->
     <script src="https://kit.fontawesome.com/562c1cf5d3.js" crossorigin="anonymous"></script>
@@ -24,14 +25,17 @@
     <script type="text/javascript" src="/scripts/utils.js"></script>
     <script type="text/javascript" src="/scripts/client.js"></script>
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
-
+    <script type="text/javascript" src="/scripts/composer.js"></script>
   </head>
-
+<!--<link rel="stylesheet" href="font-awesome-animation.min.css">-->
   <body>
     <!-- Top nav bar (fixed) -->
     <nav class="tweeter-bar">
       <div class="tweeter-icon"><span>tweeter</span></div>
-      <div class="tweeter-link"><span><strong>Write</strong> a new tweet</span></div>
+      <div class="tweeter-link">
+        <div><span><strong>Write</strong> a </span> <span class="new-tweet-button">new</span><span> tweet</span></div>
+        <div class="new-tweet-down-arrow"><i class="fa bounce fa-angle-double-down"></i></div>
+      </div>
     </nav>
     <header class="header">
       <div>
@@ -55,7 +59,8 @@
           </div>
         </form>
       </section>
-      <section id="tweets"></section>
-    </main>  
+      <section id="tweets" class="tweet-section"></section>
+    </main>
+    <div class="scrollUpButton hide-scrollUpButton"><i class="fas fa-hand-point-up"></i></div> 
   </body>
 </html>
