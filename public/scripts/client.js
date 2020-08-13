@@ -11,7 +11,9 @@ const escape = (html) => {
   return div.innerHTML;
 };
 //this function will format the tweet to proper html
-const _getTweetFormat = (tweet) => {
+// This should be called createTweetElement
+const createTweetElement = (tweet) => {
+  //console.log("tweet.created_at", typeof tweet.created_at);
   let dt = new Date(tweet.created_at);
   let html = `
     <article class="tweet">
@@ -26,7 +28,7 @@ const _getTweetFormat = (tweet) => {
     <footer class="tweet-footer">
       <div class="tweet-footer-line"></div>
       <div class="tweet-footer-bottom-row">
-        <div>${getDisplayDate(escape(tweet.created_at))}</div>
+        <div>${getDisplayDate(parseInt(escape(tweet.created_at)))}</div>
         <div class="tweet-icons"><i class="fas fa-flag"></i><i class="fas fa-retweet"></i><i class="fas fa-heart"></i></div>
       </div>
     </footer>
@@ -34,25 +36,28 @@ const _getTweetFormat = (tweet) => {
   `;
   return html;
 };
-const _createTweetElement = (tweet) => {
-  $("#tweets").append(_getTweetFormat(tweet));
-};
+// this one you don't need
+/*const createTweetElement = (tweet) => {
+  $("#tweets").append(getTweetFormat(tweet));
+};*/
 //this function will add the new tweet to the top of the page.
 const prependTweet = (tweet) => {
-  console.log("prependTweet");
-  console.log(tweet);
-  $("#tweets").prepend(_getTweetFormat(tweet));
+  //console.log("prependTweet");
+  //console.log(tweet);
+  $("#tweets").prepend(createTweetElement(tweet));
 };
 //this method will sort tweets by dates from latest. 
-const _sortTweets = (tweets) => {
+const sortTweets = (tweets) => {
   return tweets.sort((obj1, obj2) => {
-    return obj2.created_at - obj1.created_at;
+    return obj1.created_at - obj2.created_at;
   });
 };
-const _renderTweets = (tweets) => {
-  const sortedTweets = _sortTweets(tweets);
-  for(const tweet of sortedTweets) {
-    _createTweetElement(tweet);
+const renderTweets = (tweets) => {
+  // not necessary if you used prepend
+  //const sortedTweets = sortTweets(tweets);
+  for(const tweet of tweets) {
+    // $("#tweets").prepend(_createTweetElement(tweet));
+    prependTweet(tweet);
   }
 }
 const loadTweets = () => {
@@ -60,7 +65,7 @@ const loadTweets = () => {
     type: "GET",
     url: "http://localhost:8080/tweets/",
     success: (success) => {
-      _renderTweets(success);
+      renderTweets(sortTweets(success));
     },
     error: (error) => {
       console.log("GET error");
@@ -74,7 +79,7 @@ const submitTweet = (urlEncodedData) => {
     url: "http://localhost:8080/tweets/",
     data: urlEncodedData,
     success: (success) => {
-      prependTweet(success);
+      renderTweets([success]);
     },
     error: (error) => {
       console.log("error");
@@ -82,20 +87,26 @@ const submitTweet = (urlEncodedData) => {
     }
   });
 }
+const formValidation = (frm) => {
+  const errorBox = $(frm).parent().children(".tweet-submit-error");
+  errorBox.slideUp();
+  if ( !$(frm).children("#tweet-text").val() || $(frm).children("#tweet-text").val().length === 0) {
+    errorBox.children("span").text("Your tweet is empty.");
+    errorBox.slideDown();
+    return false;
+  }
+  if ( $(frm).children("#tweet-text").val().length > maxCharCount) {
+    errorBox.children("span").text(`Your tweet is over ${maxCharCount}. Please modify tweet.`);
+    errorBox.slideDown();
+    return false;
+  }
+  return true;
+};
 $(document).ready(() => {
   loadTweets();
   $("#frmTweets").submit(function (evt) {
     evt.preventDefault();
-    const errorBox = $(this).parent().children(".tweet-submit-error");
-    errorBox.slideUp();
-    if ( !$(this).children("#tweet-text").val() || $(this).children("#tweet-text").val().length === 0) {
-      errorBox.children("span").text("Your tweet is empty.");
-      errorBox.slideDown();
-      return;
-    }
-    if ( $(this).children("#tweet-text").val().length > maxCharCount) {
-      errorBox.children("span").text(`Your tweet is over ${maxCharCount}. Please modify tweet.`);
-      errorBox.slideDown();
+    if (!formValidation($(this))) {
       return;
     }
     submitTweet($(this).serialize());

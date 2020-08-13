@@ -29,7 +29,10 @@ const getDisplayDate = (timeStmp) => {
   //if same day, display MMM dd, YYYY. i.e Aug 12, 2020
   //if between 6 day, display in days. i.e 2 days ago
   //if between 7 and 
-  let customDtInfo = _getCustomDayeInfoObject(timeStmp);
+   let customDtInfo = getCustomDayeInfoObject(timeStmp);
+  if (customDtInfo.hours < 24) {
+    return getDisplayDateFromTimeStamp(timeStmp);
+  }
   if (customDtInfo.days <= 6) {
     return `${customDtInfo.days} days ago`;
   }
@@ -41,20 +44,23 @@ const getDisplayDate = (timeStmp) => {
   } 
   return `${customDtInfo.years} years ago`
 };
-const _getCustomDayeInfoObject = (timeStmp) => {
-  //get time in days
+const getCustomDayeInfoObject = (timeStmp) => {
+  //The number of milliseconds in one hour
+  const ONE_HOUR = 1000 * 60 * 60;  
   // The number of milliseconds in one day
   const ONE_DAY = 1000 * 60 * 60 * 24;  
   const d1 = new Date();
   const d2 = new Date(timeStmp); 
   
   const milis_Time_Diff = d1.getTime() - d2.getTime(); 
-  let days = Math.ceil(milis_Time_Diff / ONE_DAY);  
-  let weeks = Math.ceil(days / 7);
-  let months = Math.ceil(weeks / 4);
-  let years = Math.ceil(months / 12);
+  const hours = Math.ceil(milis_Time_Diff / ONE_HOUR);
+  const days = Math.ceil(milis_Time_Diff / ONE_DAY);  
+  const weeks = Math.ceil(days / 7);
+  const months = Math.ceil(weeks / 4);
+  const years = Math.ceil(months / 12);
   
   return {
+    hours,
     days,
     weeks,
     months,

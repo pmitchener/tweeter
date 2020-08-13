@@ -1,5 +1,4 @@
 $(document).ready(() => {
-  loadTweets();
   $(window).scroll(() => {
     if ($(window).scrollTop() > 100) {
       $(".scrollUpButton").removeClass("hide-scrollUpButton");
