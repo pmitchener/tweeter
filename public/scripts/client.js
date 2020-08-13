@@ -51,7 +51,6 @@ const _sortTweets = (tweets) => {
 };
 const _renderTweets = (tweets) => {
   const sortedTweets = _sortTweets(tweets);
-  //console.log(sortedTweets);
   for(const tweet of sortedTweets) {
     _createTweetElement(tweet);
   }
@@ -75,7 +74,6 @@ const submitTweet = (urlEncodedData) => {
     url: "http://localhost:8080/tweets/",
     data: urlEncodedData,
     success: (success) => {
-      //loadTweets();
       prependTweet(success);
     },
     error: (error) => {
@@ -88,16 +86,18 @@ $(document).ready(() => {
   loadTweets();
   $("#frmTweets").submit(function (evt) {
     evt.preventDefault();
+    const errorBox = $(this).parent().children(".tweet-submit-error");
+    errorBox.slideUp();
     if ( !$(this).children("#tweet-text").val() || $(this).children("#tweet-text").val().length === 0) {
-      alert("Your tweet is empty.");
+      errorBox.children("span").text("Your tweet is empty.");
+      errorBox.slideDown();
       return;
     }
     if ( $(this).children("#tweet-text").val().length > maxCharCount) {
-      alert(`Your tweet is over ${maxCharCount}. Please modify tweet.`);
+      errorBox.children("span").text(`Your tweet is over ${maxCharCount}. Please modify tweet.`);
+      errorBox.slideDown();
       return;
     }
-    
-    //$("#tweets").empty();//clear all tweets on page
     submitTweet($(this).serialize());
     $(this).children("#tweet-text").val('');
   });

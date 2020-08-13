@@ -2,7 +2,7 @@
   display:flex;
   justify-content: center;
   flex-direction: column;
-  padding-top:60px;
+  padding-top:40px;
   margin-bottom:60px;
 }
 .new-tweet textarea {
@@ -34,4 +34,21 @@
 }
 .new-tweet-bottom-row .counter-over-flow {
   color:#f00;
+}
+.tweet-submit-error {
+  display:flex;
+  flex-direction: column;
+  justify-content:space-between;
+  text-align: center;
+  color:red;
+  margin-bottom:0 0 0 20px ;
+  border:2px solid red;
+  padding:10px 10px 10px 10px;
+}
+.tweet-submit-error span {
+  display:inline-block;
+  width:90%;
+}
+.hide {
+  display:none;
 }
