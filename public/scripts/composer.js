@@ -7,10 +7,10 @@ $(document).ready(() => {
       $(".scrollUpButton").removeClass("hide-scrollUpButton");
     }
   });
-  $(".scrollUpButton").click( function(evt) {
+  $(".scrollUpButton").click(function() {
     $(window).scrollTop(0);
     $(this).addClass("hide-scrollUpButton");
-  })
+  });
   $(".new-tweet-button").click(function() {
     togleTweetInput();
   });

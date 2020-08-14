@@ -13,8 +13,6 @@ const escape = (html) => {
 //this function will format the tweet to proper html
 // This should be called createTweetElement
 const createTweetElement = (tweet) => {
-  //console.log("tweet.created_at", typeof tweet.created_at);
-  let dt = new Date(tweet.created_at);
   let html = `
     <article class="tweet">
     <header class="tweet-header">
@@ -46,7 +44,7 @@ const prependTweet = (tweet) => {
   //console.log(tweet);
   $("#tweets").prepend(createTweetElement(tweet));
 };
-//this method will sort tweets by dates from latest. 
+//this method will sort tweets by dates from latest.
 const sortTweets = (tweets) => {
   return tweets.sort((obj1, obj2) => {
     return obj1.created_at - obj2.created_at;
@@ -55,11 +53,11 @@ const sortTweets = (tweets) => {
 const renderTweets = (tweets) => {
   // not necessary if you used prepend
   //const sortedTweets = sortTweets(tweets);
-  for(const tweet of tweets) {
+  for (const tweet of tweets) {
     // $("#tweets").prepend(_createTweetElement(tweet));
     prependTweet(tweet);
   }
-}
+};
 const loadTweets = () => {
   $.ajax({
     type: "GET",
@@ -86,16 +84,16 @@ const submitTweet = (urlEncodedData) => {
       console.log(error);
     }
   });
-}
+};
 const formValidation = (frm) => {
   const errorBox = $(frm).parent().children(".tweet-submit-error");
   errorBox.slideUp();
-  if ( !$(frm).children("#tweet-text").val() || $(frm).children("#tweet-text").val().length === 0) {
+  if (!$(frm).children("#tweet-text").val() || $(frm).children("#tweet-text").val().length === 0) {
     errorBox.children("span").text("Your tweet is empty.");
     errorBox.slideDown();
     return false;
   }
-  if ( $(frm).children("#tweet-text").val().length > maxCharCount) {
+  if ($(frm).children("#tweet-text").val().length > maxCharCount) {
     errorBox.children("span").text(`Your tweet is over ${maxCharCount}. Please modify tweet.`);
     errorBox.slideDown();
     return false;
@@ -104,7 +102,7 @@ const formValidation = (frm) => {
 };
 $(document).ready(() => {
   loadTweets();
-  $("#frmTweets").submit(function (evt) {
+  $("#frmTweets").submit(function(evt) {
     evt.preventDefault();
     if (!formValidation($(this))) {
       return;

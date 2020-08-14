@@ -1,5 +1,3 @@
-/* Generated from scss file */
-
 $fontFamily: sans-serif;
 $customFont: bungee;
 $themeColor: #4056A1;
@@ -52,9 +50,6 @@ body {
   font-size:1em;
 }
 .tweet-main{
-  /*display:flex;
-  flex-direction: row;
-  justify-content: space-between;*/
   margin-top:80px;
   width:100%;
 }
@@ -129,6 +124,7 @@ body {
 @-o-keyframes bounce {@include keyframes(0, -0.2em, -0.3em, 0);}
 @-ms-keyframes bounce {@include keyframes(0, -0.2em, -0.3em, 0);}
 @keyframes bounce {@include keyframes(0, -0.2em, -0.3em, 0);}
+
 /* new-tweet.css */
 .new-tweet {
   display:flex;
