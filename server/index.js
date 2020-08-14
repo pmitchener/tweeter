@@ -6,7 +6,19 @@ const PORT          = 8080;
 const express       = require("express");
 const bodyParser    = require("body-parser");
 const app           = express();
+const path          = require("path");
+const sassMiddleware = require("node-sass-middleware");
 
+console.log("src", path.join(__dirname, 'styles'));
+console.log("dest", path.join(__dirname, '../public/styles'));
+app.use(sassMiddleware({
+  /* Options */
+  src: path.join(__dirname, 'styles'),
+  dest: path.join(__dirname, '../public/styles'),
+  debug: true,
+  outputStyle: 'compressed',
+  prefix:  '/styles'  // Where prefix is at <link rel="stylesheets" href="prefix/style.css"/>
+}));
 app.use(bodyParser.urlencoded({ extended: true }));
 app.use(express.static("public"));
 
