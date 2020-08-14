@@ -6,8 +6,8 @@ This repository is the starter code for the project: Students will fork and clon
 
 ## Final Product
 
-!["Screenshot of desktop layout"](https://github.com/pmitchener/tweeter/blob/master/docs/desktop.png)  
-!["Screenshot of mobile layout"](https://github.com/pmitchener/tweeter/blob/master/docs/mobile.png) 
+!["Screenshot of desktop layout"](https://github.com/pmitchener/tweeter/blob/master/docs/desktop.png)\ 
+!["Screenshot of mobile layout"](https://github.com/pmitchener/tweeter/blob/master/docs/mobile.png)\
 
 ## Getting Started
 
