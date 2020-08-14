@@ -1,3 +1,6 @@
+const togleTweetInput = () => {
+  $(".new-tweet").slideToggle();
+};
 $(document).ready(() => {
   $(window).scroll(() => {
     if ($(window).scrollTop() > 100) {
@@ -9,9 +12,9 @@ $(document).ready(() => {
     $(this).addClass("hide-scrollUpButton");
   })
   $(".new-tweet-button").click(function() {
-    $(".new-tweet").slideToggle();
+    togleTweetInput();
   });
-  $("new-tweet-down-arrow").animate({"top": "-=130px"}, 4000, "linear") ;
-  $("new-tweet-down-arrow").animate({"top": "+=130px"}, 4000, "linear") ;
-
+  $(".new-tweet-down-arrow").click(function() {
+    togleTweetInput();
+  });
 });

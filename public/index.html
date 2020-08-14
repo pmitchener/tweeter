@@ -1,6 +1,8 @@
 <!DOCTYPE html>
 <html lang="en">
   <head>
+    <!-- disable mobile zooming -->
+    <meta name='viewport' content='width=device-width, initial-scale=1.0, maximum-scale=1.0' />
     <!-- Meta Information -->
     <title>Tweeter - Home Page</title>
 
@@ -9,12 +11,7 @@
     <link href="https://fonts.googleapis.com/css2?family=Bungee&family=Source+Sans+Pro:ital,wght@0,300;0,700;1,300;1,700&display=swap" rel="stylesheet">
 
     <!-- App CSS -->
-    <link rel="stylesheet" href="/styles/layout.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/nav.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/header.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/new-tweet.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/tweet.css" type="text/css" />
-    <link rel="stylesheet" href="/styles/icon-bounce.css" type="text/css" />
+    <link rel="stylesheet" href="/styles/style.css" type="text/css" />
 
     <!-- External font-awesone package -->
     <script src="https://kit.fontawesome.com/562c1cf5d3.js" crossorigin="anonymous"></script>
@@ -27,7 +24,6 @@
     <script type="text/javascript" src="/scripts/composer-char-counter.js"></script>
     <script type="text/javascript" src="/scripts/composer.js"></script>
   </head>
-<!--<link rel="stylesheet" href="font-awesome-animation.min.css">-->
   <body>
     <!-- Top nav bar (fixed) -->
     <nav class="tweeter-bar">
@@ -37,30 +33,30 @@
         <div class="new-tweet-down-arrow"><i class="fa bounce fa-angle-double-down"></i></div>
       </div>
     </nav>
-    <header class="header">
-      <div>
-        <img src="/images/profile-hex.png"> 
-      </div>
-      <div class="my-name">
-        <h2>Patrick Mitchener</h2>
-      </div>
-    </header>
-    <!-- Page-specific (main) content here -->
-    <main class="container">
-      <section class="new-tweet">
-        <p class="tweet-submit-error hide"><i class="fas fa-skull-crossbones"></i><span></span><i class="fas fa-skull-crossbones"></i></p>
-        <!--<h2>Compose Tweet</h2>-->
-        <form id="frmTweets" method="POST" action="/tweets/">
-          <label for="tweet-text">What are you humming about?</label>
-          <textarea name="text" id="tweet-text"></textarea>
-          <div class="new-tweet-bottom-row">
-            <button type="submit">Tweet</button>
-            <output name="counter" id="tweet-char-count" class="counter" for="tweet-text">140</output>
-          </div>
-        </form>
-      </section>
-      <section id="tweets" class="tweet-section"></section>
-    </main>
-    <div class="scrollUpButton hide-scrollUpButton"><i class="fas fa-hand-point-up"></i></div> 
+    <div class="tweet-main">
+      <header class="header">
+        <div>
+          <img src="/images/profile-hex.png"> 
+        </div>
+        <div class="my-name">
+          <h2>Patrick Mitchener</h2>
+        </div>
+      </header>
+      <!-- Page-specific (main) content here -->
+      <main class="container">
+        <section class="new-tweet">
+          <p class="tweet-submit-error hide"><i class="fas fa-skull-crossbones"></i><span></span><i class="fas fa-skull-crossbones"></i></p>
+          <form id="frmTweets" method="POST" action="/tweets/">
+            <textarea name="text" id="tweet-text" placeholder="What are you humming about?"></textarea>
+            <div class="new-tweet-bottom-row">
+              <button type="submit">Tweet</button>
+              <output name="counter" id="tweet-char-count" class="counter" for="tweet-text">140</output>
+            </div>
+          </form>
+        </section>
+        <section id="tweets" class="tweet-section"></section>
+      </main>
+      <div class="scrollUpButton hide-scrollUpButton"><i class="fas fa-hand-point-up"></i></div> 
+  </div><!--end of main div-->
   </body>
 </html>

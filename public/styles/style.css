@@ -1,0 +1,310 @@
+* {
+  margin:0;
+}
+/*
+ * http://www.paulirish.com/2012/box-sizing-border-box-ftw/
+ * https://css-tricks.com/international-box-sizing-awareness-day/
+ * Do not modify these two selectors, please
+ */
+ html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+
+/*
+ * Global layout stuff
+ */
+
+body {
+  margin:auto;
+  font-family: sans-serif;
+  color: #545149;
+  background-color: #f4f1ec;
+  font-size: 24px;
+}
+/* Nav.css */
+.tweeter-bar{
+  display:flex;
+  flex-direction:row;
+  justify-content:space-between;
+  position:fixed;
+  top:0;
+  height:80px;
+  width:100%;  
+  font-family:bungee,sans-serif;
+  background-color: #b3bdcc;
+  color:#FFF;
+  background-image: url("/images/fresh-snow.png");  
+  padding:0.5em 1.5em 0.5em 1.5em;  
+}
+.tweeter-icon {
+  font-size:2em;
+}
+.tweeter-link {
+  font-family:sans-serif;
+  font-size:1em;
+}
+.tweet-main{
+  /*display:flex;
+  flex-direction: row;
+  justify-content: space-between;*/
+  margin-top:80px;
+  width:100%;
+}
+/* header.css */
+.header {
+  display:flex;
+  flex-direction:column;
+  justify-content: center;
+  align-items: center;
+  color:#FFF;
+  font-family:sans-serif;
+  background-color: #b3bdcc;
+  background-image: url("/images/fresh-snow.png");
+  position:fixed;
+  top:80px; 
+  width:100%;
+  height:340px;  
+}
+
+.my-name {
+  font-size:20px;
+}
+
+/* icon-bounce.css */
+/*copied from https://codepen.io/dragoeco/pen/ZWpGqo*/
+.bounce {
+  display: inline-block;
+  position: relative;
+  -moz-animation: bounce 0.9s infinite linear;
+  -o-animation: bounce 0.9s infinite linear;
+  -webkit-animation: bounce 0.9s infinite linear;
+  animation: bounce 0.9s infinite linear;
+  color:000;
+}
+
+/*
+ * Additional CSS can be defined below or in other CSS files, as per instructions
+ */
+ .container {
+  margin:auto;
+  width:90%;
+  margin-top:440px;
+  /*background-color: inherit;*/
+}
+
+.scrollUpButton {
+  position:fixed;
+  right:5px;
+  bottom:10px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  color:#fff;
+  width:60px;
+  height:60px;
+  background-color:#4056A1;
+  border:1px solid #2c3b6d;
+  border-radius:50%;
+}
+.hide-scrollUpButton {
+  display:none;
+}
+@-webkit-keyframes bounce {
+    0% { top: 0; }
+    50% { top: -0.2em; }
+    70% { top: -0.3em; }
+    100% { top: 0; }
+}
+@-moz-keyframes bounce {
+    0% { top: 0; }
+    50% { top: -0.2em; }
+    70% { top: -0.3em; }
+    100% { top: 0; }
+}
+@-o-keyframes bounce {
+    0% { top: 0; }
+    50% { top: -0.2em; }
+    70% { top: -0.3em; }
+    100% { top: 0; }
+}
+@-ms-keyframes bounce {
+    0% { top: 0; }
+    50% { top: -0.2em; }
+    70% { top: -0.3em; }
+    100% { top: 0; }
+}
+@keyframes bounce {
+    0% { top: 0; }
+    50% { top: -0.2em; }
+    70% { top: -0.3em; }
+    100% { top: 0; }
+}
+/* new-tweet.css */
+.new-tweet {
+  display:flex;
+  justify-content: center;
+  flex-direction: column;
+  padding-top:40px;
+  margin-bottom:60px;
+}
+.new-tweet textarea {
+  width:100%;
+  height:50px;
+  overflow:hidden;
+  border:0px;
+  border-bottom:4px solid #000;
+  background-color:inherit;
+  padding:10px;
+}
+.new-tweet textarea:focus{
+  outline:none;
+}
+.new-tweet-bottom-row {
+  display:flex;justify-content:space-between;
+  margin-top:20px;
+  font-family: bungee, sans-serif;
+  color:#000;
+  padding:5px 15px 5px 5px;
+  border:0px;  
+}
+.new-tweet-bottom-row button {
+  color:#fff;
+  background-color:#4056A1;
+  padding:5px;
+  border:0px;
+  outline:none;
+}
+.new-tweet-bottom-row .counter-over-flow {
+  color:#f00;
+}
+.tweet-submit-error {
+  display:flex;
+  flex-direction: column;
+  justify-content:space-between;
+  text-align: center;
+  color:red;
+  margin:0 0 20px 0px ;
+  border:2px solid red;
+  padding:10px 10px 10px 10px;
+}
+.tweet-submit-error span {
+  display:inline-block;
+  width:90%;
+}
+.hide {
+  display:none;
+}
+.tweeter-link {
+  display:flex;
+  flex-direction: column;
+}
+.new-tweet-button:hover {
+  cursor:pointer;
+}
+.new-tweet-down-arrow {
+  text-align:center;
+  cursor:pointer;
+}
+
+
+/* tweet.css */
+.tweet-section {
+  margin-top:20px;
+}
+.tweet {
+  padding:15px 15px 10px 15px;
+  width:100%;
+  border:2px solid #000;
+  margin-bottom:15px;
+}
+.tweet:hover {
+  box-shadow:10px 10px 5px rgba(64, 86, 161, 60);
+}
+.tweet:hover .tweet-text span{
+  font-weight:600;
+  opacity:1;
+}
+.tweet:hover .avatar-handle {
+  opacity: 1;
+}
+.tweet:hover .tweet-header-avatar {
+  opacity: 1;
+}
+.tweet:hover .tweet-footer-bottom-row {
+  opacity: 1;
+}
+.tweet-header {
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+}
+.tweet-header-avatar {
+  width:200px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  opacity: 0.5;
+}
+.avatar-handle {
+  color:#4056A1;
+  opacity: 0.5;
+}
+.tweet-text {
+  margin-top:40px;
+}
+.tweet-text span {
+  opacity:0.5
+}
+.tweet-footer {
+  margin:30px 0px 10px 0px;
+}
+.tweet-footer-line {
+  width:100%;
+  border-bottom:3px solid #000;
+}
+.tweet-footer-bottom-row {
+  display:flex;
+  justify-content: space-between;
+  font-size:15px;
+  margin-top:10px;
+  opacity:0.5;
+}
+.tweet-icons {
+  display:flex;
+  justify-content: space-between;
+  color:#4056A1;
+  width:70px;
+}
+
+/* Desktop styles. make sure this is below mobile styles */
+@media only screen and (min-width: 1024px) {
+  .tweeter-bar{
+    height:120px;
+    background-color:#4056A1;
+    background-image:none;
+    padding:1.5em;
+  }
+  .tweet-main{
+    display:flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width:100%;
+  }  
+  .header {
+    position:static;
+    font-family:sans-serif;
+    margin:250px 40px 20px 40px;
+    height:400px;
+    width:30%;
+  }
+  .container {
+    display:flex;
+    flex-direction: column;
+    width:60%;
+    margin-top:200px;
+    background-color: inherit;
+  }
+}
